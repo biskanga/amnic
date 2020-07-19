@@ -1,0 +1,49 @@
+{% extends 'amnic/base.html' %}
+
+{% block content %}
+ 
+<div class="team-heading-container text-center ken-shadow mb-3 fixed-top">
+    <h3 class="team-heading py-4">CONTACT US!</h3>
+</div>
+
+
+ <div class="contact-page-body">
+   <div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-7 col-sm-9 py-4 ml-auto">   
+            <div class="contact-icon mb-3 text-center">
+                <i class="fas fa-phone-square-alt"></i>
+                <span class="contact-number">+1 (403) 345 6789</span>
+            </div>     
+            <div class="form-container mx-auto">        
+                <form method = "POST" action="contact" class="p-5">
+                    {%csrf_token%}
+                    
+                    <!-- {% for message in messages %}
+                    <div class="text-danger text-center">
+                        {{message}}
+                    </div>
+                    {% endfor %} -->
+                            
+                    <div class="mb-3 d-flex">
+                    <input type="text" name="name" class="contact-fields " placeholder= "Your name" required autofocus><i class="fas fa-user contact-field-icon"></i>
+                    </div>
+
+                    <div class="mb-3 d-flex">
+                    <input type="email" name="email" class="contact-fields" placeholder="Your emal address" required><i class="fas fa-at contact-field-icon"></i>
+                    </div>
+
+                    <div class="mb-4 d-flex">
+                    <textarea name="email_body" class="contact-fields"  placeholder="Your message here" cols="30" rows="4" required></textarea><i class="fas fa-envelope-open-text contact-field-icon"></i>
+                    </div>
+                
+                    <button class="contact-button py-1 text-center" type="submit">SEND</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+   </div>
+ </div>
+
+{% endblock%}

@@ -1,0 +1,204 @@
+{% extends 'amnic/base.html'%}
+
+{% block content %}
+<!-- body container-->
+<div class="container-fluid mt-6 mb-3">
+
+    <!-- outer container-->
+    <div class="ken-grid ken-div-color">
+
+        <!-- profile container-->
+      <div class="profile-container">
+
+        <div class="p-2 rounded-lg post-shadow">
+           <div class="text-center rounded-lg ken-half-color">
+                <img src="{{user.profile.profile_picture.url}}" class="avatar-body">
+                <div class="ken-name"><strong>{{user.first_name}} {{user.last_name}}</strong></div>
+                <div class="text-ken">{{user.email}}</div>
+                <div class="text-ken ken-number">{{user.profile.phone_number}}</div>
+                <div class="ken-cam-div"><a href="#" class="ken-upload-btn"><i class="fas fa-camera fa-2x mt-1"></i></a> </div>
+           </div> 
+        </div>
+
+      </div>
+        <!-- profile container-->
+
+        <!-- posts container-->
+        <div class="ken-border ken-post-background rounded-lg p-2 post-container">
+
+            <div class="row">
+                <div class="col-11 mx-auto ken-profile-border ken-white pt-2 events-widthhite mt-2">
+                    <div class="row mt-2">
+                        <div class="col-1">
+                            <img class="avatar mr-2" src="{{user.profile.profile_picture.url}}"> 
+                        </div>
+                        <div class="col-9 comment-text">
+                            <form action="" method="POST" id="mainpost">
+                                {% csrf_token %}
+                                <textarea class="form-control comment-box mb-2 ml-1 px-0 ken-comment" style="overflow: hidden;" name="comment" placeholder="Type a post here {{user.first_name}}!" rows="2"></textarea>
+                            </form>
+                        </div>
+                        <button class="ken-send col-1" type="submit" form="mainpost"><i class="fas fa-paper-plane"></i></button>
+                    </div>                  
+                </div>               
+            </div>
+
+            <div class="row my-2">
+                <div class="post-label col ml-3">Posts</div>
+                <hr class="w-100 mx-4 ken-border">
+            </div>  
+
+            <div class="post-shadow py-3 mb-2 rounded-lg">
+                <div class="row mx-2 p-1">
+                    <div class="media px-1 col-12">
+                        <img src="{{user.profile.profile_picture.url}}" class="mr-2 mb-1 avatar2" alt="..." height="42px" width="42px">
+                        
+                        <div>
+                            <span>
+                            <h6><strong class="ken-name mr-4">{{user.first_name}} {{user.last_name}}</strong> 
+                                <span class="ml-3 mr-2 click-icon"><i class="far fa-thumbs-up"></i> 0</span>
+                                <span class="mr-2 click-icon2"><i class="far fa-thumbs-down"></i> 0</span>
+                                <span class="click-icon-message"><i class="far fa-comment-alt"></i> 0</span>
+                            </h6>
+                            <div class="text-muted text-left ken-small-date"><em>{{user.profile.registration_date}}</em></div>                     
+                            </span>
+                        </div>
+                    </div>  
+                    <div class="col-12 px-1 mb-2 ken-white">
+                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus 
+                        scelerisque ante sollicitudin. Cras purus odio, vestibulum in  
+                    </div>
+
+
+                    <div class="media col-12 ml-4">
+                        <img src="{{user.profile.profile_picture.url}}" class="mr-2 mb-1 avatar2" alt="..." height="32px" width="32px">
+
+                        <div>
+                            <span>
+                            <h6><strong class="ken-small-text">{{user.first_name}} {{user.last_name}}</strong> 
+                                <span class="ml-3 mr-2 click-icon"><i class="far fa-thumbs-up"></i> 0</span>
+                                <span class="mr-2 click-icon2"><i class="far fa-thumbs-down"></i> 0</span>
+                            </h6>
+                            <div class="text-muted text-left ken-small-date"><em>{{user.profile.registration_date}}</em></div>                     
+                            </span>
+                        </div>
+                    </div> 
+
+                    <div class="col-12 mb-2 ml-4 post-reply-text">
+                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus 
+                        scelerisque ante sollicitudin. Cras purus odio, vestibulum in  
+                    </div>
+                </div>    
+
+                <div class="row ken-space">
+                    <div class="col-9">
+                        <form action="" method="POST" class="comment-text" id="subpost">
+                            {% csrf_token %}
+                            <input type="text" class="form-control comment-box2 input-sm ken-comment" name="comment2" placeholder="Comment"/>
+                        </form>  
+                    </div> 
+                    <button class="ken-send col-1" type="submit" form="subpost"><i class="fas fa-paper-plane"></i></button>                                  
+                </div>
+            </div>
+
+        </div>
+        <!-- posts container-->
+
+        <!-- news and events container for small screen-->
+        <div class ="ken-small-screen ken-border rounded-lg p-2">
+            <ul class="nav nav-pills mb-2" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><i class="far fa-calendar-check"></i> Upcomming Events</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"><i class="far fa-newspaper"></i> News Feed</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active events-width" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <div class="event-grid">
+
+                        <ul class="p-2 rounded-lg div-color">
+                            <li class="text-left">
+                                <div><h5 class="text-event">Amnic end of year party</h5> </div> 
+                                <div class="text-danger ken-date"><em>{{user.profile.registration_date}}</em></div> 
+                                <div class="text-left">
+                                    <i class="fas fa-question-circle ken-icon mx-2"></i>
+                                    <i class="far fa-thumbs-up ken-icon mx-2"></i>
+                                    <i class="fas fa-comment-alt ken-icon mx-2"></i>
+                                </div>
+                                <hr class="w-100">
+                            </li>                   
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="tab-pane fade events-width" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <div class="event-grid">
+
+                        <ul class="p-2 rounded-lg div-color2">
+                            <li class="text-left">
+                                <div class="text-muted text-right ken-date"><em>{{user.profile.registration_date}}</em></div> 
+                                <div><h5 class="text-event text-danger text-center mb-1">Amnic Member gains scholarship</h5> </div> 
+                                <div class="ken-date" style="color: rgb(63, 68, 66);">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur soluta repe ... </div> 
+                                <div class="ken-date">
+                                    <a href="">Read more</a> 
+                                </div>
+                                <hr class="w-100">
+                            </li>                   
+                        </ul>
+
+                    </div>
+                </div>
+            </div> 
+        </div>       
+        <!-- news and events container for small screen-->
+
+        <!-- news and events container-->
+        <div class="news-container">
+            <div class="ken-border rounded-lg text-center div-color">
+                <div class="ken-div-head mb-1"><i class="far fa-calendar-check"></i> Upcoming Events</div>
+                <div class="small-tab-content">
+                    <ul class="px-2">
+                        <li class="text-left">
+                            <div><h5 class="text-event">Amnic end of year party</h5> </div> 
+                            <div class="text-danger ken-date"><em>{{user.profile.registration_date}}</em></div> 
+                            <div class="text-right">
+                                <i class="fas fa-question-circle ken-icon mx-2"></i>
+                                <i class="far fa-thumbs-up ken-icon mx-2"></i>
+                                <i class="fas fa-comment-alt ken-icon mx-2"></i>
+                            </div>
+                            <hr class="w-100">
+                        </li>
+                    </ul>                    
+                </div>
+            </div>    
+    
+            <div class="ken-border rounded-lg mt-2 text-center div-color2" >
+                <div class="ken-div-head"><i class="far fa-newspaper"></i> News Feed</div>
+                    <div class="small-tab-content">
+                        <ul class="px-2 pt-2">
+                            <li class="text-left">
+                                <div class="text-muted text-right ken-date"><em>{{user.profile.registration_date}}</em></div> 
+                                <div><h5 class="text-event text-danger text-center mb-1">Amnic Member gains scholarship</h5> </div> 
+                                <div class="ken-date" style="color: rgb(63, 68, 66);">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur soluta repellat rerum expedita. Quaerat exercitationem ipsa, assumenda quos veniam quasi. </div> 
+                                <div class="ken-date">
+                                    <a href="">Read more</a> 
+                                </div>
+                                <hr class="w-100">
+                            </li>                                                                                   
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- news and events container-->
+
+
+    </div>
+    <!-- outer container-->
+       
+</div>
+<!-- body container-->
+    
+{% endblock %}

@@ -1,0 +1,68 @@
+$ken-blue:rgb(4, 85, 117);
+$ken-blue1:rgb(13, 182, 204);
+$ken-blue2:rgb(4, 117, 117);
+$ken-green:rgb(9, 114, 88);
+$ken-green1:rgb(37, 87, 74);
+$ken-green2:rgb(2, 94, 86);
+$ken-yellow:rgb(238, 238, 28);
+$ken-yellow2:rgb(202, 199, 34);
+
+@mixin ken-flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ken-shadow-1{
+    -webkit-box-shadow: 6px 6px 15px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 6px 6px 15px -4px rgba(0,0,0,0.75);
+    box-shadow: 6px 6px 15px -4px rgba(0,0,0,0.75);
+}
+
+.ken-shadow-2{
+    -webkit-box-shadow: 6px 10px 26px -2px rgba(0,0,0,0.69);
+    -moz-box-shadow: 6px 10px 26px -2px rgba(0,0,0,0.69);
+    box-shadow: 6px 10px 26px -2px rgba(0,0,0,0.69);
+}
+
+.ken-shadow-3{
+    -webkit-box-shadow: 6px 10px 23px -5px rgba(0,0,0,1);
+    -moz-box-shadow: 6px 10px 23px -5px rgba(0,0,0,1);
+    box-shadow: 6px 10px 23px -5px rgba(0,0,0,1);
+}
+
+.ken-shadow-form{
+    -webkit-box-shadow: 0px 0px 24px 3px rgba(0,0,0,0.64);
+    -moz-box-shadow: 0px 0px 24px 3px rgba(0,0,0,0.64);
+    box-shadow: 0px 0px 24px 3px rgba(0,0,0,0.64);
+}
+
+.ken-radius{
+    border-radius: 12px 12px 12px 12px;
+    -moz-border-radius: 12px 12px 12px 12px;
+    -webkit-border-radius: 12px 12px 12px 12px;    
+}
+
+.ken-radius-1{
+    border-radius: 25px 25px 25px 25px;
+    -moz-border-radius: 25px 25px 25px 25px;
+    -webkit-border-radius: 25px 25px 25px 25px;
+}
+
+.ken-radius-2{
+    border-radius: 25px 25px 25px 25px;
+    -moz-border-radius: 25px 25px 25px 25px;
+    -webkit-border-radius: 25px 25px 25px 25px;
+}
+
+.ken-radius-3{
+    border-radius: 125px 125px 125px 125px;
+    -moz-border-radius: 125px 125px 125px 125px;
+    -webkit-border-radius: 125px 125px 125px 125px;    
+}
+
+.ken-radius-round{
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+}

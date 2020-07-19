@@ -1,0 +1,49 @@
+{% extends 'amnic/base.html'%}
+
+{% block content %}
+
+    <div class="container mt-6 mb-5">
+        <div class="row">
+            <div class="col-lg-5 col-md-7 col-sm-9 mx-auto">
+                <h3 class="mb-3 text-center text-success mt-5">Welcome!</h3>
+                <hr class="w-100">
+
+                <form method = "POST" action="login" class=" p-5 form-container mx-auto">
+                  {%csrf_token%}
+                  
+                    {% for message in messages %}
+                    <div class="text-danger text-center">
+                        {{message}}
+                    </div>
+                    {% endfor %}
+                 
+                  <p>Enter your login credentials</p>
+                  
+                   <!-- username -->
+                  <div class="form-label-group mb-4">
+                    <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
+                  </div>
+  
+                  <!-- password -->
+                  <div class="form-label-group mb-4">
+                    <input type="password" name="password" class="form-control" placeholder="Password" required>
+                  </div>
+
+                  <button class="btn btn-lg btn-success btn-block text-uppercase mb-3" type="submit">Sign in</button>
+                  <div class="text-center">
+                    <a class="font-weight-normal text-success" href="#">Forgot password?</a>
+                  </div>
+
+                  <div class="text-center">
+                    <p>Not an Amnic member? 
+                    <a class="font-weight-normal text-success" href="{% url 'signup' %}">Register here</a>
+                  </p>
+                  </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock %}

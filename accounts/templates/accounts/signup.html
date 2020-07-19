@@ -1,0 +1,143 @@
+{% extends 'amnic/base.html'%}
+
+{% block content %}
+<div class="container mb-3 mt-6">
+
+    <h2 class="section-heading mb-1 h2 text-center text-success">
+        Amnic Registration
+    </h2>
+    
+    <hr>
+    <div class="text-center">
+        <p>Already have an account? 
+        <a class="font-weight-normal text-success" href="{% url 'login' %}">login here</a>
+      </p>
+      </div>
+    <div class="row">
+            <div class="col-md-9 col-lg-6 mx-auto">
+
+                <form method = "POST" action="signup" class="text-center form-border p-4">
+                    {% csrf_token %}
+                    {% for message in messages %}
+                    <div class="text-danger">
+                        {{message}}
+                    </div>
+                    {% endfor %}
+
+                    <div class="form-row my-4">
+                        <div class="col">
+                            <!-- First name -->
+                            <input type="text" class="form-control" name="first_name" placeholder="First name" required>
+                        </div>
+                        <div class="col">
+                            <!-- Last name -->
+                            <input type="text"  class="form-control" name = "last_name" placeholder="Last name" required>
+                        </div>
+                    </div>
+        
+                    <!-- E-mail -->
+                    <input type="email" name = "email" class="form-control mb-4" placeholder="E-mail" required>
+            
+                    <!-- Password1 -->
+                    <input type="password" name = "password1" class="form-control" placeholder="Enter a Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" required>
+                    <small  class="form-text text-muted mb-4">
+                        At least 8 characters
+                    </small>
+
+                    <!-- Password2 -->
+                    <input type="password" name = "password2" class="form-control mb-4" placeholder="Confirm Password" required>
+                    
+                    <!-- state -->
+                    <div class="form-group">
+                        <select class="form-control" name="state" required>
+                            <option>State of origin</option>
+                            <option value="Abuja FCT">Abuja FCT</option>
+                            <option value="Abia">Abia</option>
+                            <option value="Adamawa">Adamawa</option>
+                            <option value="Akwa Ibom">Akwa Ibom</option>
+                            <option value="Anambra">Anambra</option>
+                            <option value="Bauchi">Bauchi</option>
+                            <option value="Bayelsa">Bayelsa</option>
+                            <option value="Benue">Benue</option>
+                            <option value="Borno">Borno</option>
+                            <option value="Cross River">Cross River</option>
+                            <option value="Delta">Delta</option>
+                            <option value="Ebonyi">Ebonyi</option>
+                            <option value="Edo">Edo</option>
+                            <option value="Ekiti">Ekiti</option>
+                            <option value="Enugu">Enugu</option>
+                            <option value="Gombe">Gombe</option>
+                            <option value="Imo">Imo</option>
+                            <option value="Jigawa">Jigawa</option>
+                            <option value="Kaduna">Kaduna</option>
+                            <option value="Kano">Kano</option>
+                            <option value="Katsina">Katsina</option>
+                            <option value="Kebbi">Kebbi</option>
+                            <option value="Kogi">Kogi</option>
+                            <option value="Kwara">Kwara</option>
+                            <option value="Lagos">Lagos</option>
+                            <option value="Nassarawa">Nassarawa</option>
+                            <option value="Niger">Niger</option>
+                            <option value="Ogun">Ogun</option>
+                            <option value="Ondo">Ondo</option>
+                            <option value="Osun">Osun</option>
+                            <option value="Oyo">Oyo</option>
+                            <option value="Plateau">Plateau</option>
+                            <option value="Rivers">Rivers</option>
+                            <option value="Sokoto">Sokoto</option>
+                            <option value="Taraba">Taraba</option>
+                            <option value="Yobe">Yobe</option>
+                            <option value="Zamfara">Zamfara</option>
+                        </select>
+                    </div>
+
+                    <!-- gender -->
+                    <div class="form-row mb-4">
+                        <div class="form-check form-check-inline col">
+                          <input class="form-check-input" type="radio" name="gender" id="exampleRadios1" value="male" checked>
+                          <label class="form-check-label" for="exampleRadios1">
+                            Male
+                          </label>
+                        </div>
+                        <div class="form-check form-check-inline col">
+                          <input class="form-check-input" type="radio" name="gender" id="exampleRadios2" value="female">
+                          <label class="form-check-label" for="exampleRadios2">
+                            Female
+                          </label>
+                        </div>
+                    </div>
+
+                    <!-- Phone number -->
+                    <input type="text" name="phone_number" class="form-control mb-4" placeholder="Phone number" required>
+
+                    <!-- address -->
+                    <div class="form-group">
+                        <textarea class="form-control mb-4" rows="4" name="address" placeholder="Enter your address" required></textarea>
+                    </div>
+
+                    <!-- username -->
+                    <input type="text" name="username" class="form-control" placeholder="Username" aria-describedby="RegisterUsernameHelpBlock" required>
+                    <small class="form-text text-muted mb-4">
+                        This will be used to login to Amnic
+                    </small>
+
+                    <!-- Sign up button -->
+                    <button class="btn btn-success my-4 btn-block waves-effect waves-light" type="submit">Register</button>        
+                    <hr>
+        
+                     <!-- Terms of service -->
+                    <p>By clicking
+                        <em>Register</em> you agree to Amnic's
+                        <a class = "text-success" href="" target="_blank">terms of service</a>
+                    </p>
+
+                </form>
+            </div>    
+    </div>    
+</div>            
+{% endblock %}
+
+
+              
+        
+                  
